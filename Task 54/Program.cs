@@ -28,49 +28,11 @@ void SortArray(ref int[,] NumsArray)
     {
         int[] TempArray = new int[n];
         for (int j = 0; j < n; j++) TempArray[j] = NumsArray[i, j];
-        TempArray = QuickSort(TempArray, 0, n - 1);
+        
+        Array.Sort(TempArray);
+        Array.Reverse(TempArray);
+
         for (int j = 0; j < n; j++) NumsArray[i, j] = TempArray[j];
-    }
-}
-
-int[] QuickSort(int[] NumsArray, int i, int j)
-{
-    if (i < j)
-    {
-        int q = Partition(NumsArray, i, j);
-        NumsArray = QuickSort(NumsArray, i, q);
-        NumsArray = QuickSort(NumsArray, q + 1, j);
-    }
-    return NumsArray;
-}
-
-int Partition(int[] NumsArray, int p, int r)
-{
-    int x = NumsArray[p];
-    int i = p - 1;
-    int j = r + 1;
-    while (true)
-    {
-        do
-        {
-            j--;
-        }
-        while (NumsArray[j] > x);
-        do
-        {
-            i++;
-        }
-        while (NumsArray[i] < x);
-        if (i < j)
-        {
-            int tmp = NumsArray[i];
-            NumsArray[i] = NumsArray[j];
-            NumsArray[j] = tmp;
-        }
-        else
-        {
-            return j;
-        }
     }
 }
 
